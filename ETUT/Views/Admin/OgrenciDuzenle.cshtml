@@ -1,0 +1,114 @@
+﻿@model ETUT.Models.TBLOGRENCI
+
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/Content/adminTemplate/assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/Content/adminTemplate/assets/vendors/css/vendor.bundle.base.css">
+<script src="~/Content/jquery-3.6.0.min.js"></script>
+
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="~/Content/adminTemplate/assets/css/style.css">
+<!-- End layout styles -->
+<link rel="shortcut icon" href="~/Content/adminTemplate/assets/images/favicon.ico" />
+<script src="~/Content/jquery-3.6.0.min.js"></script>
+
+
+@using (Html.BeginForm("OgrenciDuzenle", "Admin", FormMethod.Post))
+{
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Öğrenci Bilgi Düzenleme</h4>
+                <form class="forms-sample">
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Adı </label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(ogr => ogr.AD, new { @class = "form-control", placeholder = "İsminizi giriniz" })
+                            @Html.ValidationMessageFor(ogr => ogr.AD, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Soyadı </label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(ogr => ogr.SOYAD, new { @class = "form-control", placeholder = "Soyisminizi giriniz" })
+                            @Html.ValidationMessageFor(ogr => ogr.SOYAD, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">TC </label>
+
+                        <div class="col-sm-9">
+
+                            @*<input type="text" class="form-control" id="exampleInputUsername2" placeholder="TC" value="@Model.TC" name="TC">*@
+                            @Html.TextBoxFor(ogr => ogr.TC, new { @class = "form-control", type = "number", placeholder = "TC Kimlik Numaranızı giriniz" })
+                            @Html.ValidationMessageFor(ogr => ogr.TC, "", new { @class = "text-danger" })
+                            @if (@TempData["hata2"] != null)
+                            {<div class="text-danger tempdata-error">@TempData["hata2"]</div>}
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">TELNO </label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(ogr => ogr.TELNO, new { @class = "form-control", type = "number", placeholder = "Telefon Numaranızı giriniz" })
+                            @Html.ValidationMessageFor(ogr => ogr.TELNO, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Parola </label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(ogr => ogr.SIFRE, new { @class = "form-control", placeholder = "Şifrenizi giriniz" })
+                            @Html.ValidationMessageFor(ogr => ogr.SIFRE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Eposta</label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(ogr => ogr.EPOSTA, new { @class = "form-control", placeholder = "E-postanızı giriniz" })
+                            @Html.ValidationMessageFor(ogr => ogr.EPOSTA, "", new { @class = "text-danger" })
+
+
+                            @if (@TempData["hata"] != null)
+                            {<div class="text-danger tempdata-error">@TempData["hata"]</div>}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Branş</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownListFor(m => m.TBLOGRBRANS.ID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control", Name = "BRANSID" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Sınıf</label>
+                        <div class="col-sm-9">
+
+                            @Html.DropDownListFor(m => m.TBLOGRSINIF.ID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control", Name = "SINIFID" })
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Kayıt Durumu</label>
+                        <div class="col-sm-9">
+                            <div class="radio">
+                                @Html.RadioButtonFor(model => model.KAYITDURUMU, true) AKTIF
+                            </div>
+                            <div class="radio">
+                                @Html.RadioButtonFor(model => model.KAYITDURUMU, false) PASIF
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient-primary me-2">Kaydet</button>
+                    <a href="/Admin/Duzenle" class="btn btn-light">İptal Et</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+}

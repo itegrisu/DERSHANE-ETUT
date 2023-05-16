@@ -1,0 +1,117 @@
+﻿@model ETUT.Models.TBLETUT
+
+
+@{
+    var timeSlots = new List<string> { "9:00", "10:00", "11:00", "12:00", "13:00", "14:00" };
+}
+@{
+    var saatIdToTime = new Dictionary<int, string>
+{
+        { 1, "9:00" },
+        { 2, "10:00" },
+        { 3, "11:00" },
+        { 4, "12:00" },
+        { 5, "13:00" },
+        { 6, "14:00" }
+    };
+}
+<style>
+    .k {
+        position: absolute;
+        right: 0;
+        top: 40px;
+    }
+</style>
+
+<form class="mx-1 mx-md-4" method="post" action="/Ogrenci/EtutAl">
+    <div class="row mb-3">
+        <div class="col">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                @for (int i = 0; i < 6; i++)
+                {
+                    <button class="nav-link @if(i == 0) { <text>active</text> }" id="nav-day@(i)-tab" data-bs-toggle="tab" data-bs-target="#nav-day@(i)" type="button" role="tab" aria-controls="nav-day@(i)" aria-selected="@i == 0">@DateTime.Now.AddDays(i).ToString("dd MMMM dddd")</button>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="nav-tabContent">
+        @for (int i = 0; i < 6; i++)
+        {
+
+            <input type="hidden" id="hiddenDate" name="hiddenDate" value="" />
+            <input type="hidden" id="hiddenTime" name="hiddenTime" value="" />
+            <div class="tab-pane fade @if(i == 0) { <text>show active</text> }" id="nav-day@(i)" role="tabpanel" aria-labelledby="nav-day@(i)-tab">
+                <h3>@DateTime.Now.AddDays(i).ToString("dd MMMM dddd")</h3>
+                <input type="hidden" asp-for="Date" value="@DateTime.Now.AddDays(i).ToString("yyyy-MM-dd")" />
+                <div class="row row-cols-3 g-3">
+                    @foreach (var saatId in saatIdToTime.Keys)
+                    {
+                        string timeSlot = saatIdToTime[saatId];
+                        bool isReserved = Model.Liste.Any(x => x.Tarih.Date == DateTime.Now.AddDays(i).Date && x.SAATID == saatId);
+
+                        <div class="col">
+                            <button type="button" class="btn @(isReserved ? "btn-outline-secondary" : "btn-outline-primary") timeSlot" id="time-input" data-date="@DateTime.Now.AddDays(i).ToString("yyyy-MM-dd")" data-time="@timeSlot" @(isReserved ? "disabled" : "")>@timeSlot</button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        }
+    </div>
+
+    <input type="hidden" asp-for="TimeSlot" />
+    <div class="container">
+        <button type="submit" class="btn btn-primary mt-3 k" onclick="onayla()">Etüt Al</button>
+    </div>
+</form>
+
+
+
+<script>
+    function onayla() {
+        // ask for confirmation
+        var result = alert("Etütünüz onaylanmıştır");
+    }
+</script>
+
+
+
+<script>
+    var timeSlots = document.querySelectorAll('.timeSlot');
+    timeSlots.forEach(function (slot) {
+        slot.addEventListener('click', function () {
+
+            timeSlots.forEach(function (slot) {
+                slot.classList.remove('active');
+            });
+            this.classList.add('active');
+            var timeSlotInput = document.querySelector('input[name="TimeSlot"]');
+            if (timeSlotInput) {
+                timeSlotInput.value = this.getAttribute('data-time');
+
+            }
+        });
+
+    });
+
+    // Tüm timeSlot butonlarını seç
+    const timeSlot = document.querySelectorAll('.timeSlot');
+
+    timeSlot.forEach((button) => {
+        button.addEventListener('click', () => {
+            const date = button.closest('.tab-pane').querySelector('h3').textContent;
+            const time = button.dataset.time;
+        });
+    });
+
+    timeSlot.forEach((button) => {
+        button.addEventListener('click', () => {
+            const date = button.dataset.date;
+            const time = button.dataset.time;
+            document.getElementById('hiddenDate').value = date;
+            document.getElementById('hiddenTime').value = time;
+        });
+    });
+
+</script>

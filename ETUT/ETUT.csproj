@@ -1,0 +1,603 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{95046006-67AF-40CD-90CF-D3350825E332}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ETUT</RootNamespace>
+    <AssemblyName>ETUT</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44398</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\chart.js" />
+    <Content Include="Content\Giris\girisEkrani.css" />
+    <Content Include="Content\jquery-3.6.0.min.js" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.js" />
+    <Content Include="Content\moment-with-locales.js" />
+    <Content Include="Content\moment.js" />
+    <Content Include="Content\ogrenci\css\bootstrap.min.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_badge.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_box-shadow.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_buttons.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_float.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_nav-divider.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_reset-text.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_text-emphasis.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_text-hide.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\mixins\_transition.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="Content\ogrenci\css\bootstrap\_media.css" />
+    <Content Include="Content\ogrenci\css\owl.carousel.min.css" />
+    <Content Include="Content\ogrenci\css\style.css" />
+    <Content Include="Content\ogrenci\fonts\icomoon\demo-files\demo.css" />
+    <Content Include="Content\ogrenci\fonts\icomoon\demo-files\demo.js" />
+    <Content Include="Content\ogrenci\fonts\icomoon\demo.html" />
+    <Content Include="Content\ogrenci\fonts\icomoon\fonts\icomoon.svg" />
+    <Content Include="Content\ogrenci\fonts\icomoon\Read Me.txt" />
+    <Content Include="Content\ogrenci\fonts\icomoon\style.css" />
+    <Content Include="Content\ogrenci\images\2.jpg" />
+    <Content Include="Content\ogrenci\images\hero_1.jpg" />
+    <Content Include="Content\ogrenci\images\hero_3.jpg" />
+    <Content Include="Content\ogrenci\index.html" />
+    <Content Include="Content\ogrenci\js\bootstrap.min.js" />
+    <Content Include="Content\ogrenci\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\ogrenci\js\jquery.sticky.js" />
+    <Content Include="Content\ogrenci\js\main.js" />
+    <Content Include="Content\ogrenci\js\owl.carousel.min.js" />
+    <Content Include="Content\ogrenci\js\popper.min.js" />
+    <Content Include="Content\ogrenci\main.html" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Fotograflar\1.jpg" />
+    <Content Include="Fotograflar\10.jpg" />
+    <Content Include="Fotograflar\11.jpeg" />
+    <Content Include="Fotograflar\2.jpg" />
+    <Content Include="Fotograflar\3.jpg" />
+    <Content Include="Fotograflar\4.jpg" />
+    <Content Include="Fotograflar\5.jpg" />
+    <Content Include="Fotograflar\6.jpg" />
+    <Content Include="Fotograflar\7.jpg" />
+    <Content Include="Fotograflar\8.jpg" />
+    <Content Include="Fotograflar\9.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Kullanici.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Kullanici.edmx</DependentUpon>
+      <LastGenOutput>Kullanici.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Kullanici.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Kullanici.edmx</DependentUpon>
+      <LastGenOutput>Kullanici.cs</LastGenOutput>
+    </Content>
+    <Content Include="Content\adminTemplate\assets\css\style.css" />
+    <Content Include="Content\adminTemplate\assets\images\dashboard\circle.png" />
+    <Content Include="Content\adminTemplate\assets\images\dashboard\circle.svg" />
+    <Content Include="Content\adminTemplate\assets\images\dashboard\img_1.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\dashboard\img_2.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\dashboard\img_3.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\dashboard\img_4.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces-clipart\pic-1.png" />
+    <Content Include="Content\adminTemplate\assets\images\faces-clipart\pic-2.png" />
+    <Content Include="Content\adminTemplate\assets\images\faces-clipart\pic-3.png" />
+    <Content Include="Content\adminTemplate\assets\images\faces-clipart\pic-4.png" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face1.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face10.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face11.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face12.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face13.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face14.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face15.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face16.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face17.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face18.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face19.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face2.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face20.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face21.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face22.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face23.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face24.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face25.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face26.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face27.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face3.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face4.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face5.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face6.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face7.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face8.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\faces\face9.jpg" />
+    <Content Include="Content\adminTemplate\assets\images\favicon.ico" />
+    <Content Include="Content\adminTemplate\assets\images\favicon.png" />
+    <Content Include="Content\adminTemplate\assets\images\logo-mini.svg" />
+    <Content Include="Content\adminTemplate\assets\images\logo.svg" />
+    <Content Include="Content\adminTemplate\assets\images\sprites\blue.png" />
+    <Content Include="Content\adminTemplate\assets\images\sprites\dark.png" />
+    <Content Include="Content\adminTemplate\assets\images\sprites\flag.png" />
+    <Content Include="Content\adminTemplate\assets\images\sprites\green.png" />
+    <Content Include="Content\adminTemplate\assets\images\sprites\jsgrid-icons.png" />
+    <Content Include="Content\adminTemplate\assets\images\sprites\red.png" />
+    <Content Include="Content\adminTemplate\assets\images\sprites\yellow.png" />
+    <Content Include="Content\adminTemplate\assets\js\chart.js" />
+    <Content Include="Content\adminTemplate\assets\js\dashboard.js" />
+    <Content Include="Content\adminTemplate\assets\js\file-upload.js" />
+    <Content Include="Content\adminTemplate\assets\js\hoverable-collapse.js" />
+    <Content Include="Content\adminTemplate\assets\js\jquery.cookie.js" />
+    <Content Include="Content\adminTemplate\assets\js\misc.js" />
+    <Content Include="Content\adminTemplate\assets\js\off-canvas.js" />
+    <Content Include="Content\adminTemplate\assets\js\todo.js" />
+    <Content Include="Content\adminTemplate\assets\js\todolist.js" />
+    <Content Include="Content\adminTemplate\assets\vendors\chart.js\Chart.min.js" />
+    <Content Include="Content\adminTemplate\assets\vendors\css\vendor.bundle.base.css" />
+    <Content Include="Content\adminTemplate\assets\vendors\mdi\css\materialdesignicons.min.css" />
+    <Content Include="Content\adminTemplate\gulp-tasks\inject.js" />
+    <Content Include="Content\adminTemplate\gulp-tasks\serve.js" />
+    <Content Include="Content\adminTemplate\gulp-tasks\vendors.js" />
+    <Content Include="Content\adminTemplate\gulpfile.js" />
+    <Content Include="Content\adminTemplate\pages\charts\chartjs.html" />
+    <Content Include="Content\adminTemplate\pages\forms\basic_elements.html" />
+    <Content Include="Content\adminTemplate\pages\icons\mdi.html" />
+    <Content Include="Content\adminTemplate\pages\samples\blank-page.html" />
+    <Content Include="Content\adminTemplate\pages\samples\error-404.html" />
+    <Content Include="Content\adminTemplate\pages\samples\error-500.html" />
+    <Content Include="Content\adminTemplate\pages\samples\login.html" />
+    <Content Include="Content\adminTemplate\pages\samples\register.html" />
+    <Content Include="Content\adminTemplate\pages\tables\basic-table.html" />
+    <Content Include="Content\adminTemplate\pages\ui-features\buttons.html" />
+    <Content Include="Content\adminTemplate\pages\ui-features\typography.html" />
+    <Content Include="Content\adminTemplate\partials\_footer.html" />
+    <Content Include="Content\adminTemplate\partials\_navbar.html" />
+    <Content Include="Content\adminTemplate\partials\_sidebar.html" />
+    <Content Include="Content\adminTemplate\screenshot.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\adminTemplate\.DS_Store" />
+    <Content Include="Content\adminTemplate\.gitignore" />
+    <Content Include="Content\adminTemplate\assets\css\style.css.map" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.eot" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.ttf" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.woff" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Bold.woff2" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.eot" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.woff" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Light.woff2" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.eot" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.ttf" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.woff" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Medium.woff2" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.eot" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.ttf" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.woff" />
+    <Content Include="Content\adminTemplate\assets\fonts\Ubuntu\Ubuntu-Regular.woff2" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_badges.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_bootstrap-progress.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_breadcrumbs.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_buttons.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_cards.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_checkbox-radio.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_dropdown.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_forms.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_icons.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_lists.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_preview.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_tables.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\components\_todo-list.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\landing-screens\_auth.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_animation.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_background.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_badges.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_blockqoute.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_breadcrumbs.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_buttons.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_cards.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_misc.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_pagination.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_popovers.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_text.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\mixins\_tooltips.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\style.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_dashboard.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_demo.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_fonts.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_footer.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_functions.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_layouts.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_misc.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_navbar.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_reset.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_sidebar.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_typography.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_utilities.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_variables.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_vertical-wrapper.scss" />
+    <Content Include="Content\adminTemplate\assets\scss\_widget-grid.scss" />
+    <Content Include="Content\adminTemplate\assets\vendors\js\bootstrap.min.js.map" />
+    <Content Include="Content\adminTemplate\assets\vendors\mdi\css\materialdesignicons.min.css.map" />
+    <Content Include="Content\adminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="Content\adminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="Content\adminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="Content\adminTemplate\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Content\adminTemplate\CHANGELOG.md" />
+    <Content Include="Content\adminTemplate\LICENSE" />
+    <Content Include="Content\adminTemplate\package.json" />
+    <Content Include="Content\adminTemplate\PSD\Purple_dashboard_free.psd" />
+    <Content Include="Content\adminTemplate\README.md" />
+    <Content Include="Content\ogrenci\.DS_Store" />
+    <Content Include="Content\ogrenci\css\.DS_Store" />
+    <Content Include="Content\ogrenci\css\bootstrap.min.css.map" />
+    <Content Include="Content\ogrenci\fonts\.DS_Store" />
+    <Content Include="Content\ogrenci\fonts\icomoon\fonts\icomoon.eot" />
+    <Content Include="Content\ogrenci\fonts\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Content\ogrenci\fonts\icomoon\fonts\icomoon.woff" />
+    <Content Include="Content\ogrenci\fonts\icomoon\selection.json" />
+    <Content Include="Content\ogrenci\images\.DS_Store" />
+    <Content Include="Content\ogrenci\scss\.DS_Store" />
+    <Content Include="Content\ogrenci\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\bootstrap.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\vendor\_rfs.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_alert.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_badge.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_button-group.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_buttons.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_card.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_carousel.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_close.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_code.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_dropdown.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_forms.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_functions.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_grid.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_images.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_input-group.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_list-group.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_media.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_mixins.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_modal.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_nav.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_navbar.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_pagination.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_popover.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_print.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_progress.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_reboot.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_root.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_spinners.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_tables.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_toasts.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_tooltip.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_transitions.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_type.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_utilities.scss" />
+    <Content Include="Content\ogrenci\scss\bootstrap\_variables.scss" />
+    <Content Include="Content\ogrenci\scss\style.scss" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\OgrenciController.cs" />
+    <Compile Include="Controllers\GirisController.cs" />
+    <Compile Include="Controllers\KayitController.cs" />
+    <Compile Include="Controllers\OgretmenController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kullanici.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Kullanici.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kullanici.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kullanici.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Kullanici.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLADMIN.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLETUT.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLOGRBRANS.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLOGRENCI.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLOGRETMEN.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLOGRSINIF.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLORTALAN.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLSAAT.cs">
+      <DependentUpon>Kullanici.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\Kullanici.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Kullanici.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Kullanici.edmx.diagram">
+      <DependentUpon>Kullanici.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Kayit\OgrenciKayit.cshtml" />
+    <Content Include="Views\Kayit\OgretmenKayit.cshtml" />
+    <Content Include="Views\Giris\SifreSifirla.cshtml" />
+    <Content Include="Views\Giris\Giris.cshtml" />
+    <Content Include="Views\Ogrenci\DersSecimEkrani.cshtml" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Views\Ogrenci\EtutAl.cshtml" />
+    <Content Include="Views\Ogrenci\_EtutAl.cshtml" />
+    <Content Include="Views\Ogrenci\OgrenciAnasayfasi.cshtml" />
+    <Content Include="Views\Ogretmen\OgretmenAnasayfasi.cshtml" />
+    <Content Include="Views\Admin\AdminAnasayfasi.cshtml" />
+    <Content Include="Views\Admin\Etutler.cshtml" />
+    <None Include="Views\Admin\Duzenle.cshtml" />
+    <Content Include="Views\Admin\_DershaneIstatiskleri.cshtml" />
+    <Content Include="Views\Admin\_EtutAlanOgrenciler.cshtml" />
+    <Content Include="Views\Admin\OgrenciDuzenle.cshtml" />
+    <Content Include="Views\Admin\OgretmenDuzenle.cshtml" />
+    <Content Include="Views\Ogrenci\OgrencininEtutleriniGoster.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53171</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44398/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties content_4bootstrap-grid_1css_1map__JsonSchema="https://json.schemastore.org/semantic-release.json" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

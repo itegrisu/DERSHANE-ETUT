@@ -1,0 +1,149 @@
+﻿@model IEnumerable<ETUT.Models.TBLETUT>
+@{
+    Layout = null;
+}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/ogrenci/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/Content/ogrenci/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/ogrenci/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/Content/ogrenci/css/style.css">
+
+    <title>Öğretmen Anasayfası</title>
+</head>
+
+<style>
+    .hero {
+        background-position: center;
+        background-size: cover;
+    }
+
+    .container {
+        position: absolute; /* make the form an absolute positioned element */
+        top: 50%; /* move the form 50% from the top edge of the container */
+        left: 50%; /* move the form 50% from the left edge of the container */
+        transform: translate(-50%, -50%);
+     
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Tüm kaydırma çubukları için */
+    /*::-webkit-scrollbar {
+        display: none;*/ /* Kaydırma çubuğunu gizle */
+    /*}*/
+</style>
+
+
+<body style="height:100vh">
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="/Ogretmen/OgretmenAnasayfasi" style="color: black;">DERSHANE</a></div>
+
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
+                        <li><a href="/Ogretmen/OgretmenAnasayfasi" style="color: black; font-weight: bold">Anasayfa</a></li>
+
+                    </ul>
+                </nav>
+
+                <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+                    <div class="ml-auto">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a href="/Giris/Cikis" class="btn btn-danger border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Çıkış</a>
+                        }
+                    </div>
+                    <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <div class="hero">
+        <!-- Using width and height properties -->
+        <img src="~/Content/ogrenci/images/2.jpg" style="width:100%;height:100%;">
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        @{ bool yazdirildi = false; }
+                        @foreach (var item in Model)
+                        {
+                            if (!yazdirildi) // Eğer bayrak değişkeni false ise
+                            {
+                                <h3>Hoş geldiniz @item.TBLOGRETMEN.AD <span></span> @item.TBLOGRETMEN.SOYAD</h3>
+                                yazdirildi = true; //
+                            }
+                        }
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> Öğrenci </th>
+                                        <th> Tarih </th>
+                                        <th> Saat </th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.TBLOGRENCI.AD @item.TBLOGRENCI.SOYAD</td>
+                                            <td>@item.ZAMAN.ToString("dd.MM.yyyy") </td>
+                                            <td>@item.TBLSAAT.SAAT</td>
+                                        
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="~/Content/ogrenci/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/ogrenci/js/popper.min.js"></script>
+    <script src="~/Content/ogrenci/js/bootstrap.min.js"></script>
+    <script src="~/Content/ogrenci/js/jquery.sticky.js"></script>
+    <script src="~/Content/ogrenci/js/main.js"></script>
+</body>
+
+

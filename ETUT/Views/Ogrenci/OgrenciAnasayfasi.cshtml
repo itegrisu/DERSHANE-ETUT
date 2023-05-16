@@ -1,0 +1,114 @@
+﻿
+@{
+    Layout = null;
+}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/ogrenci/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/Content/ogrenci/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/ogrenci/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/Content/ogrenci/css/style.css">
+
+    <title>Öğrenci Anasayfası</title>
+</head>
+
+<style>
+    .hero {
+        background-position: center;
+        background-size: cover;
+    }
+
+    .container {
+        position: absolute; /* make the form an absolute positioned element */
+        top: 50%; /* move the form 50% from the top edge of the container */
+        left: 76%; /* move the form 50% from the left edge of the container */
+        transform: translate(-50%, -50%);
+    }
+
+    /* Tüm kaydırma çubukları için */
+    ::-webkit-scrollbar {
+        display: none; /* Kaydırma çubuğunu gizle */
+    }
+</style>
+
+
+<body style="height:100vh">
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="/Ogrenci/OgrenciAnasayfasi" style="color: black;">DERSHANE</a></div>
+
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
+                        <li><a href="/Ogrenci/OgrenciAnasayfasi" style="color: brown; font-weight:bold">Anasayfa</a></li>
+
+
+                        <li>
+                            <a href="/Ogrenci/DersSecimEkrani" class=" nav-link active" style="color: black;">Etüt Ara</a>
+
+                        </li>
+                        <li>
+                            <a href="/Ogrenci/OgrencininEtutleriniGoster" style="color: black;">Etütleri Göster</a>
+                        </li>
+
+
+                        <li class="d-lg-none"><a href="login.html" style="color: black;">Çıkış</a></li>
+                    </ul>
+                </nav>
+
+
+
+
+
+
+                <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
+                    <div class="ml-auto">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a href="/Giris/Cikis" class="btn btn-danger border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Çıkış</a>
+                        }
+
+                    </div>
+                    <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <div class="hero">
+        <!-- Using width and height properties -->
+        <img src="~/Content/ogrenci/images/2.jpg" style="width:100%;height:100%;">
+    </div>
+
+
+
+
+
+    <script src="~/Content/ogrenci/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/ogrenci/js/popper.min.js"></script>
+    <script src="~/Content/ogrenci/js/bootstrap.min.js"></script>
+    <script src="~/Content/ogrenci/js/jquery.sticky.js"></script>
+    <script src="~/Content/ogrenci/js/main.js"></script>
+</body>

@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EtutModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBLADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="50" />
+          <Property Name="SOYAD" Type="varchar" MaxLength="50" />
+          <Property Name="TC" Type="varchar" MaxLength="11" />
+          <Property Name="TELNO" Type="varchar" MaxLength="50" />
+          <Property Name="SIFRE" Type="varchar" MaxLength="50" />
+          <Property Name="EPOSTA" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLETUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OGRETMENID" Type="int" />
+          <Property Name="OGRENCIID" Type="int" />
+          <Property Name="ALANID" Type="int" />
+          <Property Name="SAATID" Type="int" />
+          <Property Name="ZAMAN" Type="datetime" />
+          <Property Name="AKTIFMI" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLOGRBRANS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BRANSADI" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLOGRENCI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="50" />
+          <Property Name="SOYAD" Type="varchar" MaxLength="50" />
+          <Property Name="TC" Type="varchar" MaxLength="11" />
+          <Property Name="TELNO" Type="varchar" MaxLength="50" />
+          <Property Name="SIFRE" Type="varchar" MaxLength="50" />
+          <Property Name="EPOSTA" Type="varchar" MaxLength="50" />
+          <Property Name="SINIFID" Type="int" />
+          <Property Name="BRANSID" Type="int" />
+          <Property Name="KAYITDURUMU" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLOGRETMEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="50" />
+          <Property Name="SOYAD" Type="varchar" MaxLength="50" />
+          <Property Name="TC" Type="varchar" MaxLength="11" />
+          <Property Name="TELNO" Type="varchar" MaxLength="50" />
+          <Property Name="SIFRE" Type="varchar" MaxLength="50" />
+          <Property Name="EPOSTA" Type="varchar" MaxLength="50" />
+          <Property Name="ALANID" Type="int" />
+          <Property Name="KAYITDURUMU" Type="bit" />
+        </EntityType>
+        <EntityType Name="TBLOGRSINIF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SINIFSEVIYESI" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLORTALAN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DERSADI" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLSAAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SAAT" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_TBLETUT_TBLOGRENCI">
+          <End Role="TBLOGRENCI" Type="Self.TBLOGRENCI" Multiplicity="0..1" />
+          <End Role="TBLETUT" Type="Self.TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRENCI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="OGRENCIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLETUT_TBLOGRETMEN">
+          <End Role="TBLOGRETMEN" Type="Self.TBLOGRETMEN" Multiplicity="0..1" />
+          <End Role="TBLETUT" Type="Self.TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRETMEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="OGRETMENID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLETUT_TBLORTALAN">
+          <End Role="TBLORTALAN" Type="Self.TBLORTALAN" Multiplicity="0..1" />
+          <End Role="TBLETUT" Type="Self.TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLORTALAN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="ALANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLETUT_TBLSAAT">
+          <End Role="TBLSAAT" Type="Self.TBLSAAT" Multiplicity="0..1" />
+          <End Role="TBLETUT" Type="Self.TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSAAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="SAATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLOGRENCI_TBLOGRBRANS1">
+          <End Role="TBLOGRBRANS" Type="Self.TBLOGRBRANS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBLOGRENCI" Type="Self.TBLOGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRBRANS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLOGRENCI">
+              <PropertyRef Name="BRANSID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLOGRENCI_TBLOGRSINIF">
+          <End Role="TBLOGRSINIF" Type="Self.TBLOGRSINIF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBLOGRENCI" Type="Self.TBLOGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRSINIF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLOGRENCI">
+              <PropertyRef Name="SINIFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLOGRETMEN_TBLORTALAN1">
+          <End Role="TBLORTALAN" Type="Self.TBLORTALAN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBLOGRETMEN" Type="Self.TBLOGRETMEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLORTALAN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLOGRETMEN">
+              <PropertyRef Name="ALANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EtutModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLADMIN" EntityType="Self.TBLADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLETUT" EntityType="Self.TBLETUT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLOGRBRANS" EntityType="Self.TBLOGRBRANS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLOGRENCI" EntityType="Self.TBLOGRENCI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLOGRETMEN" EntityType="Self.TBLOGRETMEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLOGRSINIF" EntityType="Self.TBLOGRSINIF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLORTALAN" EntityType="Self.TBLORTALAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSAAT" EntityType="Self.TBLSAAT" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLETUT_TBLOGRENCI" Association="Self.FK_TBLETUT_TBLOGRENCI">
+            <End Role="TBLOGRENCI" EntitySet="TBLOGRENCI" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLETUT_TBLOGRETMEN" Association="Self.FK_TBLETUT_TBLOGRETMEN">
+            <End Role="TBLOGRETMEN" EntitySet="TBLOGRETMEN" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLETUT_TBLORTALAN" Association="Self.FK_TBLETUT_TBLORTALAN">
+            <End Role="TBLORTALAN" EntitySet="TBLORTALAN" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLETUT_TBLSAAT" Association="Self.FK_TBLETUT_TBLSAAT">
+            <End Role="TBLSAAT" EntitySet="TBLSAAT" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLOGRENCI_TBLOGRBRANS1" Association="Self.FK_TBLOGRENCI_TBLOGRBRANS1">
+            <End Role="TBLOGRBRANS" EntitySet="TBLOGRBRANS" />
+            <End Role="TBLOGRENCI" EntitySet="TBLOGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLOGRENCI_TBLOGRSINIF" Association="Self.FK_TBLOGRENCI_TBLOGRSINIF">
+            <End Role="TBLOGRSINIF" EntitySet="TBLOGRSINIF" />
+            <End Role="TBLOGRENCI" EntitySet="TBLOGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLOGRETMEN_TBLORTALAN1" Association="Self.FK_TBLOGRETMEN_TBLORTALAN1">
+            <End Role="TBLORTALAN" EntitySet="TBLORTALAN" />
+            <End Role="TBLOGRETMEN" EntitySet="TBLOGRETMEN" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EtutModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBLADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="TELNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EPOSTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLOGRBRANS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BRANSADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLOGRENCI" Relationship="Self.FK_TBLOGRENCI_TBLOGRBRANS1" FromRole="TBLOGRBRANS" ToRole="TBLOGRENCI" />
+        </EntityType>
+        <EntityType Name="TBLOGRENCI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="TELNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EPOSTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SINIFID" Type="Int32" />
+          <Property Name="BRANSID" Type="Int32" />
+          <Property Name="KAYITDURUMU" Type="Boolean" />
+          <NavigationProperty Name="TBLOGRBRANS" Relationship="Self.FK_TBLOGRENCI_TBLOGRBRANS1" FromRole="TBLOGRENCI" ToRole="TBLOGRBRANS" />
+          <NavigationProperty Name="TBLOGRSINIF" Relationship="Self.FK_TBLOGRENCI_TBLOGRSINIF" FromRole="TBLOGRENCI" ToRole="TBLOGRSINIF" />
+          <NavigationProperty Name="TBLETUT" Relationship="EtutModel.FK_TBLETUT_TBLOGRENCI" FromRole="TBLOGRENCI" ToRole="TBLETUT" />
+        </EntityType>
+        <EntityType Name="TBLOGRETMEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="TELNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIFRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EPOSTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ALANID" Type="Int32" />
+          <Property Name="KAYITDURUMU" Type="Boolean" />
+          <NavigationProperty Name="TBLORTALAN" Relationship="Self.FK_TBLOGRETMEN_TBLORTALAN1" FromRole="TBLOGRETMEN" ToRole="TBLORTALAN" />
+          <NavigationProperty Name="TBLETUT" Relationship="EtutModel.FK_TBLETUT_TBLOGRETMEN" FromRole="TBLOGRETMEN" ToRole="TBLETUT" />
+        </EntityType>
+        <EntityType Name="TBLOGRSINIF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SINIFSEVIYESI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLOGRENCI" Relationship="Self.FK_TBLOGRENCI_TBLOGRSINIF" FromRole="TBLOGRSINIF" ToRole="TBLOGRENCI" />
+        </EntityType>
+        <EntityType Name="TBLORTALAN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DERSADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLOGRETMEN" Relationship="Self.FK_TBLOGRETMEN_TBLORTALAN1" FromRole="TBLORTALAN" ToRole="TBLOGRETMEN" />
+          <NavigationProperty Name="TBLETUT" Relationship="EtutModel.FK_TBLETUT_TBLORTALAN" FromRole="TBLORTALAN" ToRole="TBLETUT" />
+        </EntityType>
+        <Association Name="FK_TBLOGRENCI_TBLOGRBRANS1">
+          <End Role="TBLOGRBRANS" Type="Self.TBLOGRBRANS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBLOGRENCI" Type="Self.TBLOGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRBRANS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLOGRENCI">
+              <PropertyRef Name="BRANSID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLOGRENCI_TBLOGRSINIF">
+          <End Role="TBLOGRSINIF" Type="Self.TBLOGRSINIF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBLOGRENCI" Type="Self.TBLOGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRSINIF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLOGRENCI">
+              <PropertyRef Name="SINIFID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLOGRETMEN_TBLORTALAN1">
+          <End Role="TBLORTALAN" Type="Self.TBLORTALAN" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TBLOGRETMEN" Type="Self.TBLOGRETMEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLORTALAN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLOGRETMEN">
+              <PropertyRef Name="ALANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EtutEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBLADMIN" EntityType="Self.TBLADMIN" />
+          <EntitySet Name="TBLOGRBRANS" EntityType="Self.TBLOGRBRANS" />
+          <EntitySet Name="TBLOGRENCI" EntityType="Self.TBLOGRENCI" />
+          <EntitySet Name="TBLOGRETMEN" EntityType="Self.TBLOGRETMEN" />
+          <EntitySet Name="TBLOGRSINIF" EntityType="Self.TBLOGRSINIF" />
+          <EntitySet Name="TBLORTALAN" EntityType="Self.TBLORTALAN" />
+          <AssociationSet Name="FK_TBLOGRENCI_TBLOGRBRANS1" Association="Self.FK_TBLOGRENCI_TBLOGRBRANS1">
+            <End Role="TBLOGRBRANS" EntitySet="TBLOGRBRANS" />
+            <End Role="TBLOGRENCI" EntitySet="TBLOGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLOGRENCI_TBLOGRSINIF" Association="Self.FK_TBLOGRENCI_TBLOGRSINIF">
+            <End Role="TBLOGRSINIF" EntitySet="TBLOGRSINIF" />
+            <End Role="TBLOGRENCI" EntitySet="TBLOGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLOGRETMEN_TBLORTALAN1" Association="Self.FK_TBLOGRETMEN_TBLORTALAN1">
+            <End Role="TBLORTALAN" EntitySet="TBLORTALAN" />
+            <End Role="TBLOGRETMEN" EntitySet="TBLOGRETMEN" />
+          </AssociationSet>
+          <EntitySet Name="TBLETUT" EntityType="EtutModel.TBLETUT" />
+          <AssociationSet Name="FK_TBLETUT_TBLOGRENCI" Association="EtutModel.FK_TBLETUT_TBLOGRENCI">
+            <End Role="TBLOGRENCI" EntitySet="TBLOGRENCI" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLETUT_TBLOGRETMEN" Association="EtutModel.FK_TBLETUT_TBLOGRETMEN">
+            <End Role="TBLOGRETMEN" EntitySet="TBLOGRETMEN" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLETUT_TBLORTALAN" Association="EtutModel.FK_TBLETUT_TBLORTALAN">
+            <End Role="TBLORTALAN" EntitySet="TBLORTALAN" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          <EntitySet Name="TBLSAAT" EntityType="EtutModel.TBLSAAT" />
+          <AssociationSet Name="FK_TBLETUT_TBLSAAT" Association="EtutModel.FK_TBLETUT_TBLSAAT">
+            <End Role="TBLSAAT" EntitySet="TBLSAAT" />
+            <End Role="TBLETUT" EntitySet="TBLETUT" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="TBLETUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OGRETMENID" Type="Int32" />
+          <Property Name="OGRENCIID" Type="Int32" />
+          <Property Name="ALANID" Type="Int32" />
+          <Property Name="ZAMAN" Type="DateTime" Precision="3" />
+          <Property Name="AKTIFMI" Type="Boolean" />
+          <NavigationProperty Name="TBLOGRENCI" Relationship="EtutModel.FK_TBLETUT_TBLOGRENCI" FromRole="TBLETUT" ToRole="TBLOGRENCI" />
+          <NavigationProperty Name="TBLOGRETMEN" Relationship="EtutModel.FK_TBLETUT_TBLOGRETMEN" FromRole="TBLETUT" ToRole="TBLOGRETMEN" />
+          <NavigationProperty Name="TBLORTALAN" Relationship="EtutModel.FK_TBLETUT_TBLORTALAN" FromRole="TBLETUT" ToRole="TBLORTALAN" />
+          <Property Name="SAATID" Type="Int32" />
+          <NavigationProperty Name="TBLSAAT" Relationship="EtutModel.FK_TBLETUT_TBLSAAT" FromRole="TBLETUT" ToRole="TBLSAAT" />
+        </EntityType>
+        <Association Name="FK_TBLETUT_TBLOGRENCI">
+          <End Type="EtutModel.TBLOGRENCI" Role="TBLOGRENCI" Multiplicity="0..1" />
+          <End Type="EtutModel.TBLETUT" Role="TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRENCI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="OGRENCIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLETUT_TBLOGRETMEN">
+          <End Type="EtutModel.TBLOGRETMEN" Role="TBLOGRETMEN" Multiplicity="0..1" />
+          <End Type="EtutModel.TBLETUT" Role="TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRETMEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="OGRETMENID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLETUT_TBLORTALAN">
+          <End Type="EtutModel.TBLORTALAN" Role="TBLORTALAN" Multiplicity="0..1" />
+          <End Type="EtutModel.TBLETUT" Role="TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLORTALAN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="ALANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBLSAAT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SAAT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLETUT" Relationship="EtutModel.FK_TBLETUT_TBLSAAT" FromRole="TBLSAAT" ToRole="TBLETUT" />
+        </EntityType>
+        <Association Name="FK_TBLETUT_TBLSAAT">
+          <End Type="EtutModel.TBLSAAT" Role="TBLSAAT" Multiplicity="0..1" />
+          <End Type="EtutModel.TBLETUT" Role="TBLETUT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSAAT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLETUT">
+              <PropertyRef Name="SAATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EtutModelStoreContainer" CdmEntityContainer="EtutEntities1">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EtutModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLADMIN">
+            <EntityTypeMapping TypeName="EtutModel.TBLADMIN">
+              <MappingFragment StoreEntitySet="TBLADMIN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="TELNO" ColumnName="TELNO" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="EPOSTA" ColumnName="EPOSTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLOGRBRANS">
+            <EntityTypeMapping TypeName="EtutModel.TBLOGRBRANS">
+              <MappingFragment StoreEntitySet="TBLOGRBRANS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BRANSADI" ColumnName="BRANSADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLOGRENCI">
+            <EntityTypeMapping TypeName="EtutModel.TBLOGRENCI">
+              <MappingFragment StoreEntitySet="TBLOGRENCI">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="TELNO" ColumnName="TELNO" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="EPOSTA" ColumnName="EPOSTA" />
+                <ScalarProperty Name="SINIFID" ColumnName="SINIFID" />
+                <ScalarProperty Name="BRANSID" ColumnName="BRANSID" />
+                <ScalarProperty Name="KAYITDURUMU" ColumnName="KAYITDURUMU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLOGRETMEN">
+            <EntityTypeMapping TypeName="EtutModel.TBLOGRETMEN">
+              <MappingFragment StoreEntitySet="TBLOGRETMEN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="TELNO" ColumnName="TELNO" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="EPOSTA" ColumnName="EPOSTA" />
+                <ScalarProperty Name="ALANID" ColumnName="ALANID" />
+                <ScalarProperty Name="KAYITDURUMU" ColumnName="KAYITDURUMU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLOGRSINIF">
+            <EntityTypeMapping TypeName="EtutModel.TBLOGRSINIF">
+              <MappingFragment StoreEntitySet="TBLOGRSINIF">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SINIFSEVIYESI" ColumnName="SINIFSEVIYESI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLORTALAN">
+            <EntityTypeMapping TypeName="EtutModel.TBLORTALAN">
+              <MappingFragment StoreEntitySet="TBLORTALAN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DERSADI" ColumnName="DERSADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLETUT">
+            <EntityTypeMapping TypeName="EtutModel.TBLETUT">
+              <MappingFragment StoreEntitySet="TBLETUT">
+                <ScalarProperty Name="SAATID" ColumnName="SAATID" />
+                <ScalarProperty Name="AKTIFMI" ColumnName="AKTIFMI" />
+                <ScalarProperty Name="ZAMAN" ColumnName="ZAMAN" />
+                <ScalarProperty Name="ALANID" ColumnName="ALANID" />
+                <ScalarProperty Name="OGRENCIID" ColumnName="OGRENCIID" />
+                <ScalarProperty Name="OGRETMENID" ColumnName="OGRETMENID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSAAT">
+            <EntityTypeMapping TypeName="EtutModel.TBLSAAT">
+              <MappingFragment StoreEntitySet="TBLSAAT">
+                <ScalarProperty Name="SAAT" ColumnName="SAAT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

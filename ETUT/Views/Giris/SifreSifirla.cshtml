@@ -1,0 +1,70 @@
+﻿<style>
+    html, body {
+        background-image: url('../../Fotograflar/5.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        height: 100%;
+        font-family: 'Numans', sans-serif;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-12 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    label {
+        text-align: center;
+    }
+    .card {
+        background-color: rgba(0,0,0,0.48);
+    }
+
+</style>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh">
+    <div class="card p-5" style="max-width: 500px;">
+        <h2 class="card-title text-center mb-4 text-white">Şifre Sıfırla</h2>
+
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+        }
+
+        @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+        {
+            <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+            <script>
+        setTimeout(function() {
+            window.location.href = "@Url.Action("Giris","Giris");
+        }, 5000); // 5 saniye bekletme süresi (ms cinsinden)
+            </script>
+        }
+
+        @using (Html.BeginForm("SifreSifirla", "Giris", FormMethod.Post, new { @class = "row g-3" }))
+        {
+    <div class="col-md-12">
+        <div style="margin:5px; margin-left:-116px" class="text-white">
+            E-Posta Adresi
+            <br />
+        </div>
+        <div>
+            <input type="email" class="form-control" id="typeEmail" name="typeEmail" required>
+        </div>
+    </div>
+
+
+            <div class="col-12 d-flex justify-content-between align-items-center mt-4">
+                <button type="submit" class="btn btn-primary" style="margin-left:87px">Şifremi Sıfırla</button>
+                <a href="/Giris/Giris" class="btn btn-danger " style="margin-right:98px">Vazgeç</a>
+            </div>
+
+        }
+    </div>
+</div>
