@@ -120,3 +120,9 @@ Admin tarafından o öğretmene ait onaylanan etütler burada listeleniyor.
 
 
 İlk MVC projem olduğu için biraz yalın kaldı fakat kendime geliştirdikçe daha iyi projelere imza atacağımı adım gibi biliyorum. İyi Günler Herkese. :)
+
+## Geri Bildirim
+
+Herhangi bir geri bildiriminiz varsa, lütfen ank_ahmet@msn.com adresinden bana ulaşıp eleştirilerinizi yapabilirsiniz.
+
+  
