@@ -120,7 +120,7 @@ namespace ETUT.Controllers
                     smtpClient.Send(message);
 
                     // Başarılı bir şekilde tamamlandı mesajı gösterin
-                    ViewBag.SuccessMessage = "Şifreniz başarıyla yenilendi. Lütfen e-posta adresinizi kontrol edin.";
+                    ViewBag.SuccessMessage = "Şifreniz başarıyla yenilendi. Lütfen e-posta adresinizi kontrol ediniz.";
                     return View("SifreSifirla");
                 }
             }
