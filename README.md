@@ -1,6 +1,6 @@
 
 # DERSHANE-ETUT
-.NET MVC de C# diliyle yazılmış DAL mimarisi kullanılmadan Entity Framework DatabaseFirst ile geliştirilmiş bir dershane etüt projesi.
+.NET MVC de C# diliyle yazılmış katmanlı mimari  kullanılmadan Entity Framework DatabaseFirst ile geliştirilmiş bir dershane etüt projesi.
 
 Öğrenci etüt almak istediği branşı seçtikten sonra o branşa ait öğretmenler listelenir. Öğretmeni seçtikten sonra "Etüt Ara" butonuna basar ve öğretmene ait etüt saatleri listelenir. Öğrenci önünde listelenen 7 günden bir saat seçer ve "Etüt Al" butonuna basar. Seçilen öğretmende önceden alınan etütler dinamik olarak seçilemez halde gelir. Alınmak istenen etütler adminin önüne pasif olarak düşer ve admin etütü onayladıktan sonra alınan etüt öğretmende görünür olur.
 
